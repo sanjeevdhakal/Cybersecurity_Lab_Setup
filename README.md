@@ -113,8 +113,7 @@ Day 3
 
 **SUMMARIZATION**
 
-text
-
+```text
 ======================================================================================
                   CYBERSECURITY HOME LAB NETWORKING & ARCHITECTURE
 ======================================================================================
@@ -172,7 +171,7 @@ text
    - Purpose: Collects all incoming telemetry data, flags high-severity alerts, logs
      malware footprints, and hosts the visual dashboard interface for the analyst.
 ======================================================================================
-
+```
 
 
 
