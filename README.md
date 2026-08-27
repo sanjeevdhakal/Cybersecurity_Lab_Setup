@@ -111,6 +111,67 @@ Day 3
 *   **Resolution Note:** The persistent `Exception 0xc0000005` kernel crash during OS compilation was successfully resolved by migrating the virtualization layer from VMware Workstation Pro v16 to v17. 
 *   **Technical Justification:** v17 natively integrates with Windows 11 Virtualization-Based Security (VBS) and Core Isolation. This updates processing execution threads, allowing the virtual CPU engines to scale without triggering memory access violations on the host system.
 
+**SUMMARIZATION**
+
+======================================================================================
+                  CYBERSECURITY HOME LAB NETWORKING & ARCHITECTURE
+======================================================================================
+
+                   ┌──────────────────────────────────┐
+                   │       WINDOWS 11 (HOST)          │
+                   │  - Web Browser (Chrome/Edge)     │◄─────────┐
+                   │  - System Monitoring Console     │          │
+                   └─────────────────┬────────────────┘          │
+                                     │                           │
+  ===================================│===========================│====================
+  VMWARE WORKSTATION PRO 17 VIRTUAL  │ NET SUBNET (192.168.42.x) │
+  ===================================▼===========================│====================
+                                                                 │
+      ┌────────────────┐           ┌────────────────┐            │
+      │ KALI LINUX     │           │ LUBUNTU        │            │
+      │ (Attacker Node)│           │ (Victim Client)│            │
+      ├────────────────┤           ├────────────────┤            │
+      │ RAM: 2 GB      │           │ RAM: 1.5 GB    │            │
+      │ CPU: 2 Cores   │           │ CPU: 1 Core    │            │
+      │ Disk: 25 GB    │           │ Disk: 20 GB    │            │
+      └───────┬────────┘           └───────┬────────┘            │
+              │                            │                     │
+              │                            │ (Ships Logs)        │ (Visual Dashboard)
+              │ (Launches Attack)          │                     │
+              │                            ▼                     │
+              │                    ┌────────────────┐            │
+              └───────────────────►│ UBUNTU SERVER  ├────────────┘
+                                   │ (Wazuh SIEM)   │
+                                   ├────────────────┤
+                                   │ RAM: 4 GB      │
+                                   │ CPU: 2 Cores   │
+                                   │ Disk: 30 GB    │
+                                   └────────────────┘
+
+======================================================================================
+                        COMPONENT ROLES & OPERATIONS LOG
+======================================================================================
+
+1. THE ATTACKER (Kali Linux)
+   - Task: Simulates real-world adversary behavior.
+   - Purpose: Executes techniques directly from the MITRE ATT&CK Matrix (such as network
+     scanning, brute-force attempts, and malicious script execution) targeting the
+     victim machine.
+
+2. THE VICTIM (Lubuntu Client)
+   - Task: Represents a standard user endpoint in a corporate network.
+   - Core Software: Runs the silent background "Wazuh Agent" tool.
+   - Purpose: Generates raw system behavior logs and tracking data, immediately 
+     shipping them across the private network network when it detects suspicious changes.
+
+3. THE DEFENDER (Ubuntu Server / Wazuh SIEM)
+   - Task: Acts as the central Security Operations Center (SOC) brain.
+   - Core Software: Runs the active Wazuh Manager engine and data indexing databases.
+   - Purpose: Collects all incoming telemetry data, flags high-severity alerts, logs
+     malware footprints, and hosts the visual dashboard interface for the analyst.
+======================================================================================
+
+
 
 
 
