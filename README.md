@@ -106,6 +106,10 @@ Day 3
     ```
 5.  **Telemetry Verification:** Monitored the web UI landing hub to confirm the `Lubuntu-Victim` machine registered as a live asset successfully pushing local event logs.
 
+### Phase 2 Update: Hypervisor Hardening & Successful Kali Deployment
+*   **Status:** Kali-Attacker VM fully operational (2 GB RAM | 2 CPU Cores | 25 GB Disk Space).
+*   **Resolution Note:** The persistent `Exception 0xc0000005` kernel crash during OS compilation was successfully resolved by migrating the virtualization layer from VMware Workstation Pro v16 to v17. 
+*   **Technical Justification:** v17 natively integrates with Windows 11 Virtualization-Based Security (VBS) and Core Isolation. This updates processing execution threads, allowing the virtual CPU engines to scale without triggering memory access violations on the host system.
 
 
 
