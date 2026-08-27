@@ -1,4 +1,4 @@
-# Cybersecurity--Home-Lab
+# Cybersecurity--Home-Lab Setup 
 This rep will contain all the lab practices in regards to learning curve of cyber security from scratch. 
 # Cybersecurity Home Lab Project: Building an Enterprise SIEM
 
