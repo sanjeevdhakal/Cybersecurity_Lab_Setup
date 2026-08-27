@@ -54,6 +54,7 @@ The server successfully compiled the background security databases. I verified a
 *   **Backend/Frontend Decoupling:** How an enterprise tool can run efficiently as a dark text-based background service ("kitchen") while presenting data via a clean web UI ("dining room").
 *   **The Sudo Command:** Restricting core administrative file changes behind explicit verification layers for Linux system hardening.
 
+Day 2 
 
 ## Update: Phase 2 - Victim Endpoint Deployment & Attacker Pivot
 
@@ -82,4 +83,43 @@ To stay strictly within the 16 GB host RAM limitation (with ~7.4 GB already cons
 
 ## Next Operational Step
 The lab now consists of an active defensive server (Wazuh SIEM) and a live target node (Lubuntu Client). The immediate next milestone is to deploy the Wazuh Endpoint Monitoring Agent onto the Lubuntu client via the terminal and route its system syslog telemetry directly back to the SIEM dashboard at `192.168.42.128`.
+
+
+Day 3
+
+### Phase 3: Telemetry Ingestion & Live Validation
+
+*   Successfully initialized the Wazuh Endpoint Agent deployment pipeline via the `DEB/amd64` compilation channel.
+*   Routed log parameters directly to the centralized SIEM node over the internal private architecture interface (`192.168.42.128`).
+*   Validated the deployment by verifying a status change from `0` to `1 Active Agent` inside the master visual dashboard interface.
+*   Executed a manual authentication degradation simulation (Brute Force simulation) to verify the data ingestion loop and trace alert triggers directly back to the MITRE ATT&CK database.
+
+#### Detailed Agent Deployment Walkthrough:
+1.  **Dashboard Configuration:** Accessed the visual Wazuh Dashboard via the host Windows environment and navigated to `Server Management` -> `Endpoints Summary` -> `Deploy new agent`.
+2.  **Script Generation:** Configured the deployment wizard parameters to select `DEB` package format, `amd64` system architecture, and pointed explicitly to the SIEM master IP address (`192.168.42.128`).
+3.  **Endpoint Execution:** Opened a Linux terminal session inside the isolated `Lubuntu-Victim` client VM, executed the custom compilation string via root permissions, and let the installer pull the official software bundles.
+4.  **Service Activation:** Initialized and hardened the tracking service engine inside the client terminal using system commands:
+    ```bash
+    sudo systemctl daemon-reload
+    sudo systemctl enable wazuh-agent
+    sudo systemctl start wazuh-agent
+    ```
+5.  **Telemetry Verification:** Monitored the web UI landing hub to confirm the `Lubuntu-Victim` machine registered as a live asset successfully pushing local event logs.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
