@@ -15,7 +15,7 @@ As an IT Support Analyst transitioning into security, this lab allows me to brid
 *   **Operating System:** Ubuntu Server 24.04 LTS (64-bit)
 *   **Resource Allocation:** 4 GB RAM | 2 CPU Cores | 30 GB Disk Space
 *   **Network Configuration:** VMware Isolated NAT mode
-*   **Static IP Address:** 192.168.42.128
+*   **Static IP Address:** 192.168.42.130
 *   **Software Installed:** Wazuh SIEM All-in-One Deployment (v4.9)
 
 ### 🟨 Component 2: The Attacker (In Progress)
@@ -45,7 +45,7 @@ Attempted to deploy the automated Wazuh installer script. The script initially t
     ```
 
 ### 3. Verification & Web Accessibility
-The server successfully compiled the background security databases. I verified accessibility by moving to my host Windows 11 machine, opening a browser, navigating through the self-signed certificate warning, and logging directly into the active dashboard at `https://192.168.42.128`.
+The server successfully compiled the background security databases. I verified accessibility by moving to my host Windows 11 machine, opening a browser, navigating through the self-signed certificate warning, and logging directly into the active dashboard at `https://192.168.42.130`.
 
 ---
 
@@ -90,7 +90,7 @@ Day 3
 ### Phase 3: Telemetry Ingestion & Live Validation
 
 *   Successfully initialized the Wazuh Endpoint Agent deployment pipeline via the `DEB/amd64` compilation channel.
-*   Routed log parameters directly to the centralized SIEM node over the internal private architecture interface (`192.168.42.128`).
+*   Routed log parameters directly to the centralized SIEM node over the internal private architecture interface (`192.168.42.130`).
 *   Validated the deployment by verifying a status change from `0` to `1 Active Agent` inside the master visual dashboard interface.
 *   Executed a manual authentication degradation simulation (Brute Force simulation) to verify the data ingestion loop and trace alert triggers directly back to the MITRE ATT&CK database.
 
